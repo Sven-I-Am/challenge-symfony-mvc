@@ -15,19 +15,22 @@ use Symfony\Component\HttpFoundation\RequestStack;
 
 class LearningController extends AbstractController
 {
+    //instantiate requestStack for getting and setting session variables
     private $requestStack;
     public function __construct(RequestStack $requestStack)
     {
         $this->requestStack = $requestStack;
     }
+
     /**
      * @Route("/", name="homepage")
      */
     public function showMyName(Request $request): Response
     {
-        $session = $this->requestStack->getSession();
         $user = new User();
+        $session = $this->requestStack->getSession();
         $name = $session->get('userName', 'unknown user');
+        $user->setName($name);
         $form = $this->createForm(UserType::class,$user);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
@@ -37,13 +40,14 @@ class LearningController extends AbstractController
 
         return $this->renderForm('base.html.twig', [
             'page' => 'Home',
-            'name' => $name,
+            'name' => $user->getName(),
             'form' => $form,
         ]);
     }
 
+    //by adding methods=... I restrict access to this page to only POST methods
     /**
-     * @route("/change", name="change", methods={"POST"}) //by adding methods=... I restrict access to this page to only POST methods
+     * @route("/change", name="change", methods={"POST"})
      */
     public function changeMyName($user): Response
     {
