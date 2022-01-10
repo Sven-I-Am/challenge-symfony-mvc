@@ -5,13 +5,11 @@ namespace App\Controller;
 use App\Entity\User;
 use App\Form\UserType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\Form\Extension\Core\Type\DateType;
-use Symfony\Component\Form\Extension\Core\Type\SubmitType;
-use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\RequestStack;
+
 
 class LearningController extends AbstractController
 {
@@ -53,11 +51,11 @@ class LearningController extends AbstractController
     {
         $session = $this->requestStack->getSession();
         // stores an attribute in the session for later reuse
-        $session->set('userName', $user->getName());
+
         $this->render('learning/change.html.twig', [
-            'name' => $session->get('userName'),
             'page' => 'Change',
         ]);
+        $session->set('userName', $user->getName());
         return $this->redirectToRoute('homepage');
     }
 

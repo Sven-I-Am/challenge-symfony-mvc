@@ -64,3 +64,10 @@ DirectoryIndex index.php
         # RedirectTemp cannot be used instead
     </IfModule>
 </IfModule>
+
+<IfModule mod_php8.c>
+ php_value session.use_trans_sid = 0
+ php_value register_globals = 1
+ php_value session.auto_start = 0
+
+</IfModule>
