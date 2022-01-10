@@ -104,5 +104,10 @@ objectives they will be moved up into the timeline section and ticked off using 
 * use a symfony form for the 'change name' form :heavy_check_mark:
 
 ## 8. Installation Instructions for developers
-
 <!--write clear instructions on how to get your project working on the user's local environment-->
+1. clone this repository to your local environment
+2. have [Symfony CLI](https://symfony.com/doc/current/setup.html#technical-requirements) installed
+3. make sure you are running Symfony 6 `symfony console --version` or `bin/console --version`
+4. check that symfony is using php8.1 `symfony local:php:list`
+5. if not update your php version and run `touch .php-version` `echo 8.1 > .php-version` in the project root folder
+6. run `symfony server:start` to start the built-in dev-server
