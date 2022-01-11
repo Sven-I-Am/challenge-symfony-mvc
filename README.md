@@ -110,4 +110,5 @@ objectives they will be moved up into the timeline section and ticked off using 
 3. make sure you are running Symfony 6 `symfony console --version` or `bin/console --version`
 4. check that symfony is using php8.1 `symfony local:php:list`
 5. if not update your php version and run `touch .php-version` `echo 8.1 > .php-version` in the project root folder
-6. run `symfony server:start` to start the built-in dev-server
+6. run `composer install` to install all dependencies before running the server
+7. run `symfony server:start` to start the built-in dev-server
